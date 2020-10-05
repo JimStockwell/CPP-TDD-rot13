@@ -12,14 +12,13 @@ extern string& transform(string& source, string& dest);
 #include "../lib/catch.hpp"
 
 TEST_CASE("Empty string works") {
-    string source("");
+    string source;
     string dest;
 
     REQUIRE(transform(source.assign(""),dest) == "");
-    REQUIRE(transform(source.assign("a"),dest) == "n");
-    REQUIRE(transform(source.assign("n"),dest) == "a");
-    REQUIRE(transform(source.assign("."),dest) == ".");
-    REQUIRE(transform(source.assign("A"),dest) == "N");
-    REQUIRE(transform(source.assign("N"),dest) == "A");
-    REQUIRE(transform(source.assign("abc"),dest) == "nop");
+    REQUIRE(transform(source.assign("abcdefghijklm"),dest) == "nopqrstuvwxyz");
+    REQUIRE(transform(source.assign("nopqrstuvwxyz"),dest) == "abcdefghijklm");
+    REQUIRE(transform(source.assign("ABCDEFGHIJKLM"),dest) == "NOPQRSTUVWXYZ");
+    REQUIRE(transform(source.assign("NOPQRSTUVWXYZ"),dest) == "ABCDEFGHIJKLM");
+    REQUIRE(transform(source.assign(".,123"),dest) == ".,123");
 }
