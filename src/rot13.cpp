@@ -10,7 +10,7 @@ static int isBetween(char start, char end, char ofInterest) {
     return( ofInterest>=start && ofInterest<=end );
 }
 
-char transform(char source) {
+static char transform(char source) {
     const int move = 13;
 
     if(isBetween('a','m',source) || isBetween('A','M',source)) {
